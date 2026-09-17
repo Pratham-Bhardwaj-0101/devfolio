@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Required viewport tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pratham | Student Portfolio</title>
+
+    <style>
+        /* =========================
+           COLOUR + TYPE SYSTEM
+           ========================= */
+
+        :root {
+            --brand: #2563eb;
+            --brand-dark: #1d4ed8;
+            --ink: #172033;
+            --muted: #64748b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+
+            --font-main: Arial, sans-serif;
+        }
+
+        /* =========================
+           BASIC RESET
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--ink);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 5%;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+
+            /* FLEXBOX */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--ink);
+        }
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--brand);
+        }
+
+        /* =========================
+           MAIN
+           ========================= */
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        #about {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #about h1 span {
+            color: var(--brand);
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            font-size: 1.1rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--brand);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .button:hover {
+            background-color: var(--brand-dark);
+            text-decoration: none;
+        }
+
+        /* =========================
+           PROJECTS
+           ========================= */
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        /*
+            CSS GRID
+
+            Mobile:
+            1 column
+
+            Desktop:
+            3 columns
+        */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER / CONTACT
+           ========================= */
+
+        footer {
+            background-color: var(--ink);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer h2 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            font-weight: bold;
+        }
+
+        .contact-links a:hover {
+            color: #93c5fd;
+        }
+
+        /* =========================
+           RESPONSIVE BREAKPOINT
+           ========================= */
+
+        @media (min-width: 768px) {
+
+            /*
+                At 768px and above,
+                projects change from
+                1 column to 3 columns.
+            */
+
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* =========================
+           SMALL PHONE ADJUSTMENTS
+           ========================= */
+
+        @media (max-width: 600px) {
+
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            main {
+                padding-top: 40px;
+            }
+
+            #about {
+                padding: 40px 10px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+        <div class="header-container">
+
+            <a href="#about" class="logo">
+                Prat
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#projects">Projects</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+         ========================= -->
+
+    <main>
+
+        <!-- ABOUT SECTION -->
+
+        <section id="about">
+
+            <h1>
+                Hi, I'm <span>Prat</span>.
+            </h1>
+
+            <p class="intro">
+                I'm a student learning software development and
+                building my skills in programming, web development,
+                and problem solving. I enjoy turning ideas into
+                simple and useful digital projects.
+            </p>
+
+            <a href="#projects" class="button">
+                View My Projects
+            </a>
+
+        </section>
+
+
+        <!-- PROJECTS SECTION -->
+
+        <section id="projects">
+
+            <div class="section-heading">
+                <h2>My Projects</h2>
+
+                <p>
+                    Some of the projects I have worked on while
+                    learning software development.
+                </p>
+            </div>
+
+
+            <div class="projects-grid">
+
+                <!-- PROJECT 1 -->
+
+                <article class="project-card">
+
+                    <h3>Responsive Portfolio</h3>
+
+                    <p>
+                        A responsive personal portfolio built with
+                        semantic HTML and CSS Flexbox and Grid.
+                    </p>
+
+                    <a
+                        href="https://github.com/your-username/devfolio"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 2 -->
+
+                <article class="project-card">
+
+                    <h3>DOM Makeover</h3>
+
+                    <p>
+                        A JavaScript project that dynamically changes
+                        webpage content using DOM manipulation.
+                    </p>
+
+                    <a
+                        href="https://github.com/your-username/dom-makeover"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 3 -->
+
+                <article class="project-card">
+
+                    <h3>Java Programming Practice</h3>
+
+                    <p>
+                        A collection of beginner Java programs covering
+                        variables, conditions, loops, and problem solving.
+                    </p>
+
+                    <a
+                        href="https://github.com/your-username/java-practice"
+                        class="project-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER / CONTACT
+         ========================= -->
+
+    <footer id="contact">
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            You can find me through these platforms.
+        </p>
+
+        <div class="contact-links">
+
+            <!-- Replace with your actual email -->
+            <a href="mailto:your-email@example.com">
+                Email
+            </a>
+
+            <!-- Replace with your actual GitHub -->
+            <a
+                href="https://github.com/your-username"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+            <!-- Replace with your actual LinkedIn -->
+            <a
+                href="https://www.linkedin.com/in/your-username/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
