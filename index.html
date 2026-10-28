@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FrameFound helps you discover visual inspiration by topic.">
+    <title>FrameFound — Find your next view</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <a class="brand" href="#" aria-label="FrameFound home">
+            <span class="brand-mark" aria-hidden="true">F.</span>
+            <span>framefound</span>
+        </a>
+        <span class="header-note">A little inspiration, on demand.</span>
+    </header>
+
+    <main class="page-shell">
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">YOUR VISUAL FIELD GUIDE</p>
+            <h1 id="page-title">Find a fresh <em>point of view.</em></h1>
+            <p class="intro-copy">From quiet corners to faraway places, search for images that spark your curiosity.</p>
+        </section>
+
+        <section class="search-panel" aria-label="Image search">
+            <form id="search-form" class="search-form">
+                <label class="sr-only" for="search-input">What would you like to discover?</label>
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    id="search-input"
+                    name="query"
+                    type="search"
+                    placeholder="Try “coastal towns” or “wildflowers”"
+                    autocomplete="off"
+                >
+                <button id="search-button" type="submit">Search <span aria-hidden="true">↗</span></button>
+            </form>
+            <button id="clear-button" class="clear-button" type="reset" form="search-form">Clear search</button>
+        </section>
+
+        <section class="quick-picks" aria-labelledby="quick-picks-title">
+            <div class="section-label" id="quick-picks-title">NEED A STARTING POINT?</div>
+            <div class="chip-row">
+                <button class="topic-chip" type="button">Nature <span aria-hidden="true">↗</span></button>
+                <button class="topic-chip" type="button">Architecture <span aria-hidden="true">↗</span></button>
+                <button class="topic-chip" type="button">Wildlife <span aria-hidden="true">↗</span></button>
+                <button class="topic-chip" type="button">Ocean life <span aria-hidden="true">↗</span></button>
+                <button class="topic-chip" type="button">Street scenes <span aria-hidden="true">↗</span></button>
+            </div>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-heading">
+            <div class="results-heading-row">
+                <div>
+                    <p class="eyebrow">THE COLLECTION</p>
+                    <h2 id="results-heading">Your next discovery</h2>
+                </div>
+                <p id="result-count" class="result-count" aria-live="polite">Your results will appear here</p>
+            </div>
+
+            <div id="results" class="results-grid" aria-live="polite"></div>
+
+            <div id="empty-state" class="empty-state">
+                <div class="empty-illustration" aria-hidden="true">
+                    <span class="sun"></span>
+                    <span class="hill hill-back"></span>
+                    <span class="hill hill-front"></span>
+                    <span class="frame-corner corner-one"></span>
+                    <span class="frame-corner corner-two"></span>
+                </div>
+                <h3>Good things start with a search.</h3>
+                <p>Enter a topic above, or pick a starting point to explore a new visual world.</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <span>FRAMEFOUND / VISUAL CURIOSITY CLUB</span>
+            <span>Made for the joy of looking closer.</span>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
